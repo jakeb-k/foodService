@@ -15,43 +15,69 @@
     </form> 
   </div>
 </div>   
-</div> 
-<div id="restTitle"><p><b> Hot Spots </b></p> </div> 
+</div>
 <div id = "restaurantsContainer">
-  <div id="row">
-    @foreach($restaurants as $restaurant)
-    @if($loop->index % 3 == 2 && $loop->index > 0)
-    <div id="restHolder"> 
-      <a href="restaurant/{{$restaurant->id}}">
-        <div class="restCont">
-          <img src="{{$restaurant->image}}"/> 
-        </div>  
-      </a>
-      <p><b>{{$restaurant->name}}</b> </br> ({{$restaurant->location}}) ·   
-            @for($i = 0; $i < $restaurant->priceLv; $i++) 
-            $  
-            @endfor</p>
-    </div> 
-    </div> 
-    <div id="row"> 
-      @else 
+  <div class="sideMenu">
+    <h1> Cuisines </h1>
+    <table>
+      @for($i = 0; $i < count($cuisines); $i+=2)
+      <tr>
+        <td>
+          <form>
+            <input type="hidden" name="search" value="{{$cuisines[$i]}}" >
+            <button type="submit"><span>{{$cuisines[$i]}}</span></button>
+          </form>
+        </td>
+        <td>
+          <form>
+            <input type="hidden" name="search" value="{{$cuisines[$i+1]}}" >
+            <button type="submit"><span>{{$cuisines[$i+1]}}</span></button>
+          </form>
+        </td>
+      </tr>
+      @endfor
+    </table>
+  </div>
+  <div id="restContent">
+    <div id="restTitle"><p><b> Hot Spots </b></p> </div> 
+    <div id="row">
+      @foreach($restaurants as $restaurant)
+      @if($loop->index % 3 == 2 && $loop->index > 0)
       <div id="restHolder"> 
         <a href="restaurant/{{$restaurant->id}}">
           <div class="restCont">
             <img src="{{$restaurant->image}}"/> 
           </div>  
         </a>
-        <p>  <b> {{$restaurant->name}}</b> </br> ({{$restaurant->location}}) ·   
-            @for($i = 0; $i < $restaurant->priceLv; $i++) 
-            $  
-            @endfor</p>
+        <p><b>{{$restaurant->name}}</b> </br> ({{$restaurant->location}}) ·   
+              @for($i = 0; $i < $restaurant->priceLv; $i++) 
+              $  
+              @endfor</p>
       </div> 
-    @endif
-    @endforeach
-</div> 
+      </div> 
+      <div id="row"> 
+        @else 
+        <div id="restHolder"> 
+          <a href="restaurant/{{$restaurant->id}}">
+            <div class="restCont">
+              <img src="{{$restaurant->image}}"/> 
+            </div>  
+          </a>
+          <p>  <b> {{$restaurant->name}}</b> </br> ({{$restaurant->location}}) ·   
+              @for($i = 0; $i < $restaurant->priceLv; $i++) 
+              $  
+              @endfor</p>
+        </div> 
+      @endif
+      @endforeach
+      
+    </div> 
+    <div class="pageBar">
+        {{$restaurants->links()}}
+      </div>  
+  </div>
+</div>
 
-<div id="pageBar">
-   {{$restaurants->links()}}
-</div>  
+
 
 @endsection

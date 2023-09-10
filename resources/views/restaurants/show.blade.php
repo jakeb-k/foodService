@@ -8,7 +8,7 @@
     <div id="dishContainer">
     
     <div class="restInfo"> 
-        <a id="return" href="/FoodService/public"> &#9754 </a>
+        <a id="return" href="/FoodService/public" style="text-decoration:none;"> &#9754 </a>
         <p> 
             <b> 
                 {{$restaurants->name}} 
@@ -37,11 +37,7 @@
                 @if(Auth::user()->role == 1)
                 <?php $check = explode(",",Auth::user()->favs); ?> 
                 <div id="addLinks">
-                    <p id="addButton"> 
-                        <a href='{{url("add-to-cart/$dish->id")}}'> 
-                            &#65291 
-                        </a> 
-                    </p>
+                    
                     <a href='{{url("add-to-cart/$dish->id")}}'> 
                         <img src="{{ asset('storage/images/'.$dish->image) }}" />
                     </a>
@@ -82,7 +78,7 @@
                 <?php $check = explode(",",Auth::user()->favs); ?> 
                 @if(Auth::user()->role == 1)
                     <div id="addLinks">
-                    <p id="addButton"> <a href='{{url("add-to-cart/$dish->id")}}'> &#65291 </a> </p>
+                   
                     <a href='{{url("add-to-cart/$dish->id")}}'> 
                         <img src="{{url('images/noImg.jpg')}}"/>
                     </a>
@@ -125,7 +121,7 @@
             @else
                 ${{number_format($dish->price, 2)}} 
             @endif
-            <p> {{$dish->description}} </p> 
+            <p class="desc"> {{$dish->description}} </p> 
             @auth
             <?php $check = explode(",",Auth::user()->favs); ?> 
                 @if(Auth::user()->name == $restaurants->name)
@@ -152,7 +148,7 @@
                 <?php $check = explode(",",Auth::user()->favs); ?> 
                 @if(Auth::user()->role == 1)
                <div id="addLinks">
-                    <p id="addButton"> <a href='{{url("add-to-cart/$dish->id")}}'> &#65291 </a> </p>
+                   
                     <a href='{{url("add-to-cart/$dish->id")}}'> 
                         <img src="{{ asset('storage/images/'.$dish->image) }}" />
                     </a>
@@ -194,7 +190,7 @@
                 <?php $check = explode(",",Auth::user()->favs); ?> 
                 @if(Auth::user()->role == 1)
                     <div id="addLinks">
-                    <p id="addButton"> <a href='{{url("add-to-cart/$dish->id")}}'> &#65291 </a> </p>
+                   
                     <a href='{{url("add-to-cart/$dish->id")}}'> 
                         <img src="{{url('images/noImg.jpg')}}"/>
                     </a>
@@ -237,7 +233,7 @@
             @else
                 ${{number_format($dish->price, 2)}} 
             @endif
-            </p> <p> {{$dish->description}} </p> 
+            </p> <p class="desc"> {{$dish->description}} </p> 
             @auth
                 @if(Auth::user()->name == $restaurants->name)
                 <div id="dishOps">

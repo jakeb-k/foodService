@@ -12,13 +12,12 @@ Restaurants
     @if($favs)
     @foreach($favs as $fav)
     @if($loop->index % 3 == 2 && $loop->index > 0)
-        <div id="favBox">
+        <div id="dishBox">
             @if($fav->image)
                 @auth
                 @if(Auth::user()->role == 1)
                 <div id="addLinks">
-                    <p id="addButton"> <a href='{{url("add-to-cart/$fav->id")}}'> &#65291 </a> </p>
-                    <a href='{{url("add-to-cart/$fav->id")}}'> 
+                     <a href='{{url("add-to-cart/$fav->id")}}'> 
                         <img src="{{ asset('storage/images/'.$fav->image) }}" />
                     </a>
 
@@ -52,7 +51,7 @@ Restaurants
                 @auth
                 @if(Auth::user()->role == 1)
                     <div id="addLinks">
-                    <p id="addButton"> <a href='{{url("add-to-cart/$fav->id")}}'> &#65291 </a> </p>
+    
                     <a href='{{url("add-to-cart/$fav->id")}}'> 
                         <img src="{{url('images/noImg.jpg')}}"/>
                     </a>
@@ -95,17 +94,16 @@ Restaurants
             @else
                 ${{number_format($fav->price, 2)}} 
             @endif
-            <p> {{$fav->description}} </p> 
+            <p class="desc"> {{$fav->description}} </p> 
         </div>
         </div> <div id="row"> 
         @else                  
-        <div id="favBox">
+        <div id="dishBox">
             @if($fav->image)
                 @auth
                 @if(Auth::user()->role == 1)
                 <div id="addLinks">
-                    <p id="addButton"> <a href='{{url("add-to-cart/$fav->id")}}'> &#65291 </a> </p>
-                    <a href='{{url("add-to-cart/$fav->id")}}'> 
+                     <a href='{{url("add-to-cart/$fav->id")}}'> 
                         <img src="{{ asset('storage/images/'.$fav->image) }}" />
                     </a>
                     @if(str_contains(Auth::user()->favs, $fav->id))
@@ -138,8 +136,7 @@ Restaurants
                 @auth
                 @if(Auth::user()->role == 1)
                     <div id="addLinks">
-                    <p id="addButton"> <a href='{{url("add-to-cart/$fav->id")}}'> &#65291 </a> </p>
-                    <a href='{{url("add-to-cart/$fav->id")}}'> 
+                     <a href='{{url("add-to-cart/$fav->id")}}'> 
                         <img src="{{url('images/noImg.jpg')}}"/>
                     </a>
 
@@ -181,7 +178,7 @@ Restaurants
             @else
                 ${{number_format($fav->price, 2)}} 
             @endif
-            </p> <p> {{$fav->description}} </p> 
+            </p> <p class="desc"> {{$fav->description}} </p> 
         </div>
     @endif
     @endforeach

@@ -29,7 +29,9 @@ table.bordered th { border: solid; border-width: thin; border-color: black; }
 .alt {background-color: grey;}; 
 
 address { margin-left: 0in; font-style: italic; }       
-
+a:hover {
+    text-decoration: none;
+}
 a:link { text-decoration: none; }
 a:visited { text-decoration: none; }
 a:active { text-decoration: none; }
@@ -63,19 +65,63 @@ HOME PAGE RESTAURANTS STYLING
     z-index:-13; 
 }
 #restTitle p{
-    margin-top:50px;
-    margin-left:19%; 
+    margin-left:20px; 
+    margin-top:20px;
     color:#ffc300;
     font-family: 'Alegraya Sans', 'Tahoma', sans-serif; 
-    font-size: 34px;
+    font-size: 36px;
 }
 #restaurantsContainer {
-    
+   padding-top:25px; 
     display:flex; 
-    flex-direction: column;
-    justify-content: center;
+    flex-direction:row;
     margin:auto;
-    width:80%;
+    width:100%; 
+}
+
+.sideMenu{
+    height:fit-content; 
+    border-top-right-radius:25px; 
+    border-bottom-right-radius: 25px;
+    background:#ffc300;
+    color:white;
+    font-family:'Helvetica', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    padding:25px; 
+    width: 100%;
+    text-align:center; 
+}
+.sideMenu table {
+    margin: 20px auto;
+    border-collapse: separate;
+    border-spacing: 7px 7px;
+}
+.sideMenu td{
+    border-radius:50px; 
+    text-align:center; 
+    width:150px; 
+    padding:20px 20px 0px 20px; 
+    background:white;
+    font-size:22px; 
+    font-family: 'Alegraya Sans', 'Tahoma', sans-serif;
+}
+.sideMenu tr {
+    align-self: center;
+    margin-top:20px; 
+}
+.sideMenu td:hover {
+    background:rgba(40,40,40);
+    color:#ffc300;
+    transition:0.5s ease-in-out; 
+    cursor:pointer;
+}
+td:hover span {
+    transition: 0.5s ease-in-out;
+    color:#ffc300; 
+}
+.sideMenu td button {
+    background:none;
+    border:none;
+    padding:0;  
 }
 #row {
     display:flex;
@@ -115,7 +161,10 @@ HOME PAGE RESTAURANTS STYLING
 .restCont:hover {
     box-shadow: 0px 0px 10px rgb(131, 131, 131);
 }
-
+.pageBar {
+   margin-left:40%; 
+    width:50%; 
+}
 /*
 
 
@@ -601,33 +650,37 @@ RESTAURANT DETAIL PAGE STYLING
 }
 
 #dishBox {
+    overflow:hidden;
+    text-align:left;  
     z-index:1; 
     margin:16px 16px 16px 16px; 
     width:236px;
-    height:236px;  
+    height:220px;  
     display: flex;
     flex-direction: column;
     align-items:center; 
+    box-shadow: 0px 0px 5px rgb(125, 125, 125);
+    border-radius:5px; 
 }   
-
+#dishBox:hover{
+    overflow:unset; 
+}
 #dishBox img {
+    margin-left:12px; 
     width:236px;
     height:120px; 
-    border-radius: 30px;
-    margin-left:-23px; 
-    box-shadow: 0px 0px 5px rgb(125, 125, 125);
-    
-    
+    border-radius: 5px;
 }
-#dishBox img:hover {
-    box-shadow: 0px 0px 15px #ca9b00;
+#dishBox .desc {
+    padding-left:10px; 
 }
+
 #dishBox p {
     font-size: 12px;
     margin: 0px;
     color: black;
     padding: 0;
-    align-self: flex-start;
+    align-self: center;
 }
 #addLinks:hover {
     scale:1.1; 
@@ -729,7 +782,7 @@ RESTAURANT DETAIL PAGE STYLING
     margin-left: -40px;
     border: none;
     background: none;
-    color: rgb(23, 23, 23);
+   
 }
 
 #favForm2 button i:hover {
@@ -1077,14 +1130,17 @@ FOOTER STYLING
 
 
 */
+
 #footer {
+    padding-bottom:-100px; 
+    height:auto; 
     display:flex; 
     flex-direction: row;
     justify-content: space-around;
-    padding:10px; 
-    background-color: rgb(14, 14, 14);
-    box-shadow: 0px -10px 40px #ffc300;
-    margin-top:150px;
+   
+    background-color: rgb(40, 40, 40);
+    box-shadow: 0px -10px 0px #ffc300;
+    margin-top:50px;
     
 }
 #footer p {

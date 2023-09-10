@@ -41,14 +41,23 @@ class RestaurantController extends Controller
         } else {
             $dishes = Dish::all();
         }
-        
+
+        //GATHERING ALL CUISINES FOR MENU
+        $cRests = Restaurant::all();
+        $cuisines = [];
+        foreach($cRests as $c){
+            if(in_array($c->cuisine, $cuisines) == FALSE){
+                $cuisines[]=$c->cuisine;
+            }
+        }
+
         $restaurants = Restaurant::paginate(6);
         $ids = \DB::table('users')
                 ->where('role', '=', 2)
                 ->get();
         
         
-        return view('restaurants.index')->with('restaurants', $restaurants)->with('rest_id', $rest_id)->with('ids', $ids); 
+        return view('restaurants.index')->with('restaurants', $restaurants)->with('rest_id', $rest_id)->with('ids', $ids)->with('cuisines', $cuisines); 
     }
     public function favs($id) {
         $user = User::find($id); 

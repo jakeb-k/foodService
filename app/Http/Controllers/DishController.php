@@ -276,31 +276,7 @@ class DishController extends Controller
         $dish->save();
         return redirect("restaurant/$restId");
     }
-    public function tagPage($id) {
-
-        if(Auth::user()->name ?? "" == null) {
-             $rest_id = Auth::user()->id ?? ""; 
-             $rest = \DB::table('restaurants')
-                ->where('name','like', Auth::user()->name ?? "")
-                ->get();
-               
-                if($rest != '[]') {
-                $rest_id = $rest[0]->id; 
-                }
-        } else {
-             $rest = \DB::table('restaurants')
-                ->where('name','like', Auth::user()->name)
-                ->get();
-                dd($rest); 
-                if($rest != '[]') {
-                $rest_id = $rest[0]->id; 
-                }
-        }
-        
-        $dish = Dish::find($id);
-        $tags = explode(",", $dish->tags); 
-        return view('dishes.tags')->with('tags', $tags)->with('dish', $dish)->with('rest_id', $rest_id); 
-    }
+   
     public function addTag(Request $request, $id) {
         $dish = Dish::find($id);
         $tags = explode(",",$dish->tags); 

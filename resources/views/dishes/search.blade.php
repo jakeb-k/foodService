@@ -28,11 +28,6 @@
                 @auth
                 @if(Auth::user()->role == 1)
                 <div id="addLinks">
-                    <p id="addButton"> 
-                        <a href='{{url("add-to-cart/$dish->id")}}'> 
-                            &#65291 
-                        </a> 
-                    </p>
                     <a href='{{url("add-to-cart/$dish->id")}}'> 
                         <img src="{{ asset('storage/images/'.$dish->image) }}" />
                     </a>
@@ -73,7 +68,7 @@
                 @auth
                 @if(Auth::user()->role == 1)
                     <div id="addLinks">
-                    <p id="addButton"> <a href='{{url("add-to-cart/$dish->id")}}'> &#65291 </a> </p>
+                    
                     <a href='{{url("add-to-cart/$dish->id")}}'> 
                         <img src="{{url('images/noImg.jpg')}}"/>
                     </a>
@@ -127,7 +122,7 @@
                 @auth
                 @if(Auth::user()->role == 1)
                <div id="addLinks">
-                    <p id="addButton"> <a href='{{url("add-to-cart/$dish->id")}}'> &#65291 </a> </p>
+                    
                     <a href='{{url("add-to-cart/$dish->id")}}'> 
                         <img src="{{ asset('storage/images/'.$dish->image) }}" />
                     </a>
@@ -168,7 +163,7 @@
                 @auth
                 @if(Auth::user()->role == 1)
                     <div id="addLinks">
-                    <p id="addButton"> <a href='{{url("add-to-cart/$dish->id")}}'> &#65291 </a> </p>
+                    
                     <a href='{{url("add-to-cart/$dish->id")}}'> 
                         <img src="{{url('images/noImg.jpg')}}"/>
                     </a>

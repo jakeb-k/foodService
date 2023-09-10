@@ -34,7 +34,7 @@ Route::get('/cart', [DishController::class, 'cart']);
 Route::get('add-to-cart/{id}', [DishController::class, 'addToCart']);
 Route::get('favs/{id}', [UserController::class, 'show']);
 Route::any('user/{id}/new-fav', [UserController::class, 'newFav']);
-Route::get('dish/{id}/add-tag', [DishController::class, 'tagPage']);
+
 Route::post('dish/{id}/add-tag', [DishController::class, 'addTag']); 
 Route::get('dish/{id}/add-tag/{tag}', [DishController::class, 'deleteTag']); 
 Route::get('/documentation', function(){

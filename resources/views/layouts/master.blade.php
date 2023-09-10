@@ -157,18 +157,17 @@
          
         @yield('content')
     </div> 
-   
+    </div>
     <div id="footer">
         <div>
             <img src="{{url('images/logo2.png')}}" /> 
         </div>
         
         <div>
-            <p> Made by Jakeb Knowles - 2703ICT 2022 </p> 
+            <p> ©  2023 Jakeb Knowles </p> 
         </div>
         <div> 
-            <a href="{{url('/documentation')}}"> <p> Documentation </p> </a> 
-            <a href="/FoodService/public"> <p> Restaurants </p> </a>
+            
         </div>
     </div> 
 
