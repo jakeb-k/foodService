@@ -44,7 +44,7 @@
       @foreach($restaurants as $restaurant)
       @if($loop->index % 3 == 2 && $loop->index > 0)
       <div id="restHolder"> 
-        <a href="restaurant/{{$restaurant->id}}">
+        <a href='{{url("restaurant/".$restaurant->id)}}'>
           <div class="restCont">
             <img src="{{$restaurant->image}}"/> 
           </div>  
@@ -58,7 +58,7 @@
       <div id="row"> 
         @else 
         <div id="restHolder"> 
-          <a href="restaurant/{{$restaurant->id}}">
+          <a href='{{url("restaurant/".$restaurant->id)}}'>
             <div class="restCont">
               <img src="{{$restaurant->image}}"/> 
             </div>  

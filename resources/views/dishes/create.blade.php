@@ -4,7 +4,7 @@
     Create New Dish!
 @endsection
 @section('content')
-
+<a id="return" href="{{url('/')}}" style="text-decoration:none;"> &#9754 </a>
 <div id="createContainer">
     <h1> Create New Dish! </h1>
         <form id="createForm" method="POST" action='{{url("dish")}}' enctype="multipart/form-data">

@@ -12,7 +12,7 @@
         <div id="reSearch">
             <form> 
                 <div id="subInput2"> 
-                     <a id="return2" href="/FoodService/public"> &#9754 </a>
+                     <a id="return2" href="{{url('/')}}"> &#9754 </a>
                     <input type="text" name="search" placeholder="Whats for Dinner?" > 
                     <button type="submit"> <p> Find Food! <p> </button> 
                 </div> 
@@ -35,7 +35,7 @@
 
                 @if(str_contains(Auth::user()->favs, $dish->id))
                    <span class="favButton">
-                        <form id="favForm2" method="POST" action="/FoodService/public/user/{{Auth::user()->id}}/new-fav" enctype="multipart/form-data">
+                        <form id="favForm2" method="POST" action='{{url("user/".Auth::user()->id."/new-fav")}}' enctype="multipart/form-data">
                         {{csrf_field()}}
                         {{method_field('POST')}}
                         <input name="dish_id" type="hidden" value="{{$dish->id}}" /> 
@@ -46,7 +46,7 @@
                     </span>
                 @else 
                     <span class="favButton">
-                        <form id="favForm" method="POST" action="/FoodService/public/user/{{Auth::user()->id}}/new-fav" enctype="multipart/form-data">
+                        <form id="favForm" method="POST" action='{{url("user/".Auth::user()->id."/new-fav")}}' enctype="multipart/form-data">
                         {{csrf_field()}}
                         {{method_field('POST')}}
                         <input name="dish_id" type="hidden" value="{{$dish->id}}" /> 
@@ -75,7 +75,7 @@
 
                     @if(str_contains(Auth::user()->favs, $dish->id))
                         <span class="favButton">
-                                <form id="favForm2" method="POST" action="/FoodService/public/user/{{Auth::user()->id}}/new-fav" enctype="multipart/form-data">
+                                <form id="favForm2" method="POST" action='{{url("user/".Auth::user()->id."/new-fav")}}' enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 {{method_field('POST')}}
                                 <input name="dish_id" type="hidden" value="{{$dish->id}}" /> 
@@ -86,7 +86,7 @@
                             </span>
                         @else 
                             <span class="favButton">
-                                <form id="favForm" method="POST" action="/FoodService/public/user/{{Auth::user()->id}}/new-fav" enctype="multipart/form-data">
+                                <form id="favForm" method="POST" action='{{url("user/".Auth::user()->id."/new-fav")}}' enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 {{method_field('POST')}}
                                 <input name="dish_id" type="hidden" value="{{$dish->id}}" /> 
@@ -129,7 +129,7 @@
 
                     @if(str_contains(Auth::user()->favs, $dish->id))
                     <span class="favButton">
-                            <form id="favForm2" method="POST" action="/FoodService/public/user/{{Auth::user()->id}}/new-fav" enctype="multipart/form-data">
+                            <form id="favForm2" method="POST" action='{{url("user/".Auth::user()->id."/new-fav")}}' enctype="multipart/form-data">
                             {{csrf_field()}}
                             {{method_field('POST')}}
                             <input name="dish_id" type="hidden" value="{{$dish->id}}" /> 
@@ -140,7 +140,7 @@
                         </span>
                     @else 
                         <span class="favButton">
-                            <form id="favForm" method="POST" action="/FoodService/public/user/{{Auth::user()->id}}/new-fav" enctype="multipart/form-data">
+                            <form id="favForm" method="POST" action='{{url("user/".Auth::user()->id."/new-fav")}}' enctype="multipart/form-data">
                             {{csrf_field()}}
                             {{method_field('POST')}}
                             <input name="dish_id" type="hidden" value="{{$dish->id}}" /> 
@@ -170,7 +170,7 @@
 
                     @if(str_contains(Auth::user()->favs, $dish->id))
                         <span class="favButton">
-                                <form id="favForm2" method="POST" action="/FoodService/public/user/{{Auth::user()->id}}/new-fav" enctype="multipart/form-data">
+                                <form id="favForm2" method="POST" action='{{url("user/".Auth::user()->id."/new-fav")}}' enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 {{method_field('POST')}}
                                 <input name="dish_id" type="hidden" value="{{$dish->id}}" /> 
@@ -181,7 +181,7 @@
                             </span>
                         @else 
                             <span class="favButton">
-                                <form id="favForm" method="POST" action="/FoodService/public/user/{{Auth::user()->id}}/new-fav" enctype="multipart/form-data">
+                                <form id="favForm" method="POST" action='{{url("user/".Auth::user()->id."/new-fav")}}' enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 {{method_field('POST')}}
                                 <input name="dish_id" type="hidden" value="{{$dish->id}}" /> 

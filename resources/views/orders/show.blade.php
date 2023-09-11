@@ -13,7 +13,7 @@ Orders for {{Auth::user()->name}}
                 
                 <div class ="orderBox">
                     <img src="{{url('images/logo2.png')}}" /> 
-                    <span class="orderTick"><a href='/FoodService/public/order/{{$orders[$i]->id}}/edit'>✔</a></span>   
+                    <span class="orderTick"><a href='{{url("order/".$orders[$i]->id."/edit")}}'>✔</a></span>   
                     <p class="time"><em>{{$orders[$i]->updated_at->format('D jS M y g:i A')}} </em></p>
                    
                     <div class="line">

@@ -76,7 +76,7 @@
         
         <div id="hamburger"> 
             <div id="title">
-                <a href='/FoodService/public'>
+                <a href="{{url('/')}}">
                     <img src="{{url('images/logo2.png')}}" /> 
                 </a>
             </div>
@@ -98,7 +98,7 @@
                 </div>
                 <div id="favsLink">
                     @if(Auth::user()->role == 1)
-                    <a href="/FoodService/public/favs/{{Auth::user()->id}}"> <i class="fa-regular fa-heart"></i> Favourites </a>
+                    <a href='{{url("favs/".Auth::user()->id)}}'> <i class="fa-regular fa-heart"></i> Favourites </a>
                     @endif
                 </div>
             </div> 
@@ -118,7 +118,7 @@
                         <a href=' {{url("dish/create")}}'> Create New Dish! </a></div>
                     <div>
                     <span id="viewOrders"> 
-                        <a href="/FoodService/public/order/{{$rest_id}}"> View Orders </a></div>
+                        <a href='{{url("order/".$rest_id)}}'> View Orders </a></div>
                     
                 </div>
                 @endif
@@ -307,7 +307,7 @@
           
                
             <div class="modal-body">
-                    <form id="createForm" method="POST" action="user/{{Auth::user()->id}}" enctype="multipart/form-data">
+                    <form id="createForm" method="POST" action='{{url("user/".Auth::user()->id)}}' enctype="multipart/form-data">
                         {{csrf_field()}}
                         {{method_field('PUT')}}
                         <div class="createInput">

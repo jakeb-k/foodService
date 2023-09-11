@@ -7,10 +7,11 @@ Restaurants
 @section('content')
 <?php $check = explode(",",Auth::user()->favs); ?> 
 <div id = "favContainer">
-    <a id="return2" href="/FoodService/public"> &#9754 </a>
+    <a id="return2" href="{{url('/')}}"> &#9754 </a>
   <div id="row">
     @if($favs)
     @foreach($favs as $fav)
+    @if($fav) 
     @if($loop->index % 3 == 2 && $loop->index > 0)
         <div id="dishBox">
             @if($fav->image)
@@ -23,7 +24,7 @@ Restaurants
 
                     @if(str_contains(Auth::user()->favs, $fav->id))
                         <span class="favButton">
-                            <form id="favForm2" method="POST" action="/FoodService/public/user/{{Auth::user()->id}}/new-fav" enctype="multipart/form-data">
+                            <form id="favForm2" method="POST" action='{{url("user/".Auth::user()->id."/new-fav")}}' enctype="multipart/form-data">
                             {{csrf_field()}}
                             {{method_field('POST')}}
                             <input name="fav_id" type="hidden" value="{{$fav->id}}" /> 
@@ -34,7 +35,7 @@ Restaurants
                         </span>
                         @else 
                         <span class="favButton">
-                            <form id="favForm" method="POST" action="/FoodService/public/user/{{Auth::user()->id}}/new-fav" enctype="multipart/form-data">
+                            <form id="favForm" method="POST" action='{{url("user/".Auth::user()->id."/new-fav")}}' enctype="multipart/form-data">
                             {{csrf_field()}}
                             {{method_field('POST')}}
                             <input name="fav_id" type="hidden" value="{{$fav->id}}" /> 
@@ -58,7 +59,7 @@ Restaurants
 
                     @if(in_array(strval($fav->id), $check, true)) 
                         <span class="favButton">
-                                <form id="favForm2" method="POST" action="/FoodService/public/user/{{Auth::user()->id}}/new-fav" enctype="multipart/form-data">
+                                <form id="favForm2" method="POST" action='{{url("user/".Auth::user()->id."/new-fav")}}' enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 {{method_field('POST')}}
                                 <input name="fav_id" type="hidden" value="{{$fav->id}}" /> 
@@ -68,8 +69,8 @@ Restaurants
                                 </form>
                             </span>
                         @else 
-                            <span class="favButton">
-                                <form id="favForm" method="POST" action="/FoodService/public/user/{{Auth::user()->id}}/new-fav" enctype="multipart/form-data">
+                            <span class="favButton">                       {{url("restaurant/".$restaurant->id)}}
+                                <form id="favForm" method="POST" action='{{url("user/".Auth::user()->id."/new-fav")}}' enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 {{method_field('POST')}}
                                 <input name="fav_id" type="hidden" value="{{$fav->id}}" /> 
@@ -108,7 +109,7 @@ Restaurants
                     </a>
                     @if(str_contains(Auth::user()->favs, $fav->id))
                         <span class="favButton">
-                            <form id="favForm2" method="POST" action="/FoodService/public/user/{{Auth::user()->id}}/new-fav" enctype="multipart/form-data">
+                            <form id="favForm2" method="POST" action='{{url("user/".Auth::user()->id."/new-fav")}}' enctype="multipart/form-data">
                             {{csrf_field()}}
                             {{method_field('POST')}}
                             <input name="fav_id" type="hidden" value="{{$fav->id}}" /> 
@@ -119,7 +120,7 @@ Restaurants
                         </span>
                     @else 
                         <span class="favButton">
-                            <form id="favForm" method="POST" action="/FoodService/public/user/{{Auth::user()->id}}/new-fav" enctype="multipart/form-data">
+                            <form id="favForm" method="POST" action='{{url("user/".Auth::user()->id."/new-fav")}}' enctype="multipart/form-data">
                             {{csrf_field()}}
                             {{method_field('POST')}}
                             <input name="fav_id" type="hidden" value="{{$fav->id}}" /> 
@@ -142,7 +143,7 @@ Restaurants
 
                     @if(in_array(strval($fav->id), $check, true)) 
                         <span class="favButton">
-                                <form id="favForm2" method="POST" action="/FoodService/public/user/{{Auth::user()->id}}/new-fav" enctype="multipart/form-data">
+                                <form id="favForm2" method="POST" action='{{url("user/".Auth::user()->id."/new-fav")}}' enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 {{method_field('POST')}}
                                 <input name="fav_id" type="hidden" value="{{$fav->id}}" /> 
@@ -153,7 +154,7 @@ Restaurants
                             </span>
                         @else 
                             <span class="favButton">
-                                <form id="favForm" method="POST" action="/FoodService/public/user/{{Auth::user()->id}}/new-fav" enctype="multipart/form-data">
+                                <form id="favForm" method="POST" action='{{url("user/".Auth::user()->id."/new-fav")}}' enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 {{method_field('POST')}}
                                 <input name="fav_id" type="hidden" value="{{$fav->id}}" /> 
@@ -180,6 +181,7 @@ Restaurants
             @endif
             </p> <p class="desc"> {{$fav->description}} </p> 
         </div>
+    @endif
     @endif
     @endforeach
     @else

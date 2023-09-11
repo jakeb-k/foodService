@@ -5,6 +5,7 @@
 @endsection
 @section('content')
 <div id="createContainer">
+    <a id="return" href="{{url('restaurant/'.$dish->restaurant_id)}}" style="text-decoration:none;"> &#9754 </a>
     <h1> Update {{$dish->name}} </h1>
         <form id="createForm" method="POST" action='{{url("dish/$dish->id")}}' enctype="multipart/form-data">
             {{csrf_field()}}

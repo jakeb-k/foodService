@@ -59,7 +59,7 @@ class UserController extends Controller
             $favs[] = $dish;
         }
         
-       
+       #dd($favs); 
         return view('user.favs')->with('favs', $favs); 
     }
 
@@ -97,7 +97,7 @@ class UserController extends Controller
             $user->favs = implode(",",$favs); 
             $user->save();
         }
-        return redirect()->back()->with('message', $message);
+        return redirect()->back()->with('message', $message)->with('favs',$favs);
     }
     /**
      * Update the specified resource in storage.
