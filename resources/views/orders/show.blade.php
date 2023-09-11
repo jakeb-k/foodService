@@ -2,7 +2,7 @@
 @extends('layouts.master')
 @section('title')
 @auth 
-{{Auth::user()->name}} Orders
+Orders for {{Auth::user()->name}} 
 @endauth
 @endsection
 @section('content')

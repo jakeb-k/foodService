@@ -1,55 +1,6 @@
-body { 
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
-    font-weight: normal;
-    font-style: normal;
-    background-color: white;
-    color: black; 
-}
-
-/*h1 { font-weight: bold; color: rgba(9, 191, 58, 0.969); }*/ 
-h2 {
-    font-family:'Segoe UI', 'Alegraya Sans', 'Tahoma', sans-serif;
-    color: black;
-}
-h3 { font-weight: bold; color: #009933; }
-h4 { font-weight: bold; font-style: italic; color: #669900; }
-
-p { margin-left: 0em; font-size:30px;}
-
-table { font-family: Verdana, Arial, Helvetica, sans-serif; }
-caption { font-weight: bold; }
-th { font-weight: bold; background-color: blue; color: white; padding: 2px; }
-td { padding: 2px; }
-
-/* tr { background-color: white; } */
-
-table.bordered    { border: solid; border-width: thin; }
-table.bordered td { border: solid; border-width: thin; }
-table.bordered th { border: solid; border-width: thin; border-color: black; }
-.alt {background-color: grey;}; 
-
-address { margin-left: 0in; font-style: italic; }       
-a:hover {
-    text-decoration: none;
-}
-a:link { text-decoration: none; }
-a:visited { text-decoration: none; }
-a:active { text-decoration: none; }
-
-
-.alert { font-weight: bold; color: #cc9c00; align-self: flex-start;}
-
-.eg { 
-    font-family: Monaco, Courier, "Courier New", monospace;
-    background-color: #FFFFE0;
-    border-style: groove; 
-    border: thin;
-    padding: 5px;
-}
-
-.antispam { display:none;}
-
-
+@import url('https://fonts.cdnfonts.com/css/viagram');
+@import url('https://fonts.cdnfonts.com/css/artistry');
+@import url('https://fonts.cdnfonts.com/css/open-runde');
 /*
 
 
@@ -65,10 +16,10 @@ HOME PAGE RESTAURANTS STYLING
     z-index:-13; 
 }
 #restTitle p{
-    margin-left:20px; 
+    margin-left:40px; 
     margin-top:20px;
     color:#ffc300;
-    font-family: 'Alegraya Sans', 'Tahoma', sans-serif; 
+    font-family: 'Artistry', 'Tahoma', sans-serif; 
     font-size: 36px;
 }
 #restaurantsContainer {
@@ -80,7 +31,6 @@ HOME PAGE RESTAURANTS STYLING
 }
 
 .sideMenu{
-    height:fit-content; 
     border-top-right-radius:25px; 
     border-bottom-right-radius: 25px;
     background:#ffc300;
@@ -89,39 +39,47 @@ HOME PAGE RESTAURANTS STYLING
     padding:25px; 
     width: 100%;
     text-align:center; 
+    height:700px;
+}
+.sideMenu h1 {
+    font-family: 'Viagram', sans-serif;
+    font-size:54px; 
+    font-weight:bolder;
+
 }
 .sideMenu table {
     margin: 20px auto;
     border-collapse: separate;
-    border-spacing: 7px 7px;
+    border-spacing: 14px 14px;
 }
 .sideMenu td{
-    border-radius:50px; 
+    border-radius:10px; 
     text-align:center; 
     width:150px; 
-    padding:20px 20px 0px 20px; 
     background:white;
-    font-size:22px; 
-    font-family: 'Alegraya Sans', 'Tahoma', sans-serif;
+    font-size:26px; 
+    font-family: 'Artistry', 'Tahoma', sans-serif;
 }
 .sideMenu tr {
     align-self: center;
-    margin-top:20px; 
+    
 }
 .sideMenu td:hover {
     background:rgba(40,40,40);
     color:#ffc300;
-    transition:0.5s ease-in-out; 
+    transition:0.2s ease-out; 
     cursor:pointer;
 }
 td:hover span {
-    transition: 0.5s ease-in-out;
+    transition: 0.2s ease-out;
     color:#ffc300; 
 }
 .sideMenu td button {
     background:none;
     border:none;
-    padding:0;  
+    padding:0; 
+    margin-top:10px;  
+    margin-bottom:-20px; 
 }
 #row {
     display:flex;
@@ -136,24 +94,24 @@ td:hover span {
 }
 #restHolder p {
     font-size:20px;
-    font-family:'Helvetica','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Open Runde','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .restCont {
     z-index: 1;
-    border-radius: 50px;
-    margin:22px; 
-    width:240px;
-    height:200px;  
+    border-radius: 25px;
+    
+    width:290px;
+    height:240px;  
     display:flex; 
     flex-direction: column;
     justify-content:space-evenly;
 }
 .restCont img {
     z-index: 1;
-   width:240px; 
-   height:200px;
-   border-radius:50px; 
+   width:290px; 
+   height:240px;
+   border-radius:25px; 
 }
 .restHolder p { 
     color: black;
@@ -198,7 +156,7 @@ ORDER STYLING
     width: 40%;
     display:flex; 
     flex-direction: column; 
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Open Runde', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .orderBox { 
     width:75%; 
@@ -216,7 +174,7 @@ ORDER STYLING
     justify-content: space-between;
     padding:5px; 
     margin-top:5px; 
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Open Runde', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .line {
     margin:auto; 
@@ -309,7 +267,7 @@ MENU BAR STYLING
     justify-content: space-around;
     flex-direction:column;
     margin-top:0; 
-    font-family:Helvetica; 
+    font-family: 'Open Runde', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     width:19%; 
 }
 #profile {
@@ -386,7 +344,7 @@ MENU BAR STYLING
     
 }
 #menuBar a {
-    font-family:'Helvetica', sans-serif;
+    font-family: 'Helvetica', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size:20px; 
     color:black; 
 
@@ -622,7 +580,7 @@ RESTAURANT DETAIL PAGE STYLING
     display:flex;
     flex-direction: column; 
     align-items: center;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Open Runde', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 #editDish a{
     color: black;
@@ -650,6 +608,7 @@ RESTAURANT DETAIL PAGE STYLING
 }
 
 #dishBox {
+    font-family: 'Open Runde', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow:hidden;
     text-align:left;  
     z-index:1; 
@@ -666,8 +625,8 @@ RESTAURANT DETAIL PAGE STYLING
     overflow:unset; 
 }
 #dishBox img {
-    margin-left:12px; 
-    width:236px;
+    
+    width:100%;
     height:120px; 
     border-radius: 5px;
 }
@@ -793,16 +752,7 @@ RESTAURANT DETAIL PAGE STYLING
     transition: 0.15s ease-in-out;
     color: #ffc300;
 }
-/*
-#addButton a{
-    color: #ffc300;
-    font-size: 32px;
-}
-#addButton a:hover {
-    color: #ffc400a6;
-    background-color:white;
-    transition:0.05s; 
-}
+
 /*
 
 

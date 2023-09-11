@@ -37,7 +37,7 @@ class RestaurantController extends Controller
         }
         if (request('search')) {
             $dishes = Dish::where('tags', 'like', '%' . request('search') . '%')->get(); 
-            return view('dishes.search')->with('dishes', $dishes)->with('rest_id', $rest_id); 
+            return view('dishes.search')->with('dishes', $dishes)->with('rest_id', $rest_id)->with('search',request('search')); 
         } else {
             $dishes = Dish::all();
         }

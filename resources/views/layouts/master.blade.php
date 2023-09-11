@@ -167,7 +167,7 @@
             <p> ©  2023 Jakeb Knowles </p> 
         </div>
         <div> 
-            
+            <p> THIS IS A MOCK / FAKE WEBSITE </p> 
         </div>
     </div> 
 

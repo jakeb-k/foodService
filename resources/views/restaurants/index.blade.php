@@ -2,7 +2,7 @@
 <div id="splashCont">
   @extends('layouts.master')
   @section('title')
-  Restaurants
+  Food Service
   @endsection
   @section('content')
   <div id="restSearch">

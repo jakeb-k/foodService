@@ -2,7 +2,7 @@
 @extends('layouts.master')
 @section('title')
 @auth 
-{{Auth::user()->name}} Orders
+{{$search}} Food
 @endauth
 @endsection
 @section('content')
@@ -111,7 +111,7 @@
             @else
                 ${{number_format($dish->price, 2)}} 
             @endif
-            <p> {{$dish->description}} </p> 
+            <p class="desc"> {{$dish->description}} </p> 
             
         </div>
         </div> <div id="row"> 
@@ -206,7 +206,7 @@
             @else
                 ${{number_format($dish->price, 2)}} 
             @endif
-            </p> <p> {{$dish->description}} </p> 
+            </p> <p class="desc"> {{$dish->description}} </p> 
             
         </div>
     
