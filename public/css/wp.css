@@ -336,8 +336,9 @@ MENU BAR STYLING
     display: flex;
     width:100%;
     padding-right: 5%;
-    z-index: 1;
+    z-index: 2;
     height:140px; 
+    transition:0.5s ease-in-out; 
 }
 #menuBar * {
     padding-left:15px; 
@@ -1321,27 +1322,353 @@ EXPERIMENTAL CSS
     right: 0;
     transition: right 0.3s 0.2s cubic-bezier(0.1, 0, 0.1, 1);
 }
-/*SLIDE OUT MENU */
-#drawer-toggle:checked~#hamburger {
-    -webkit-transition: .25s ease-in-out;
-    -moz-transition: .25s ease-in-out;
-    -o-transition: .25s ease-in-out;
-    transition: .25s ease-in-out;
+/*
+
+
+
+PULL OUT MENU CODE
+
+
+
+
+*/
+
+section {
+    display: inline-block;
+    width: 100%;
+}
+
+a {
+    color: white;
+    background-color: #ffc300;
+    padding: 0.3em;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/**
+┌─┐┌─┐┌─┐  ┬ ┬┌─┐┌┬┐┌┐ ┬ ┬┬─┐┌─┐┌─┐┬─┐  ┌┬┐┌─┐┌┐┌┬ ┬
+│  └─┐└─┐  ├─┤├─┤│││├┴┐│ │├┬┘│ ┬├┤ ├┬┘  │││├┤ ││││ │
+└─┘└─┘└─┘  ┴ ┴┴ ┴┴ ┴└─┘└─┘┴└─└─┘└─┘┴└─  ┴ ┴└─┘┘└┘└─┘
+**/
+/** always use classes and id's,[Type=checkbox] is slow css **/
+
+.checkbox-container {
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top:5px; 
+    margin-left:-12.5px; 
+    z-index:3; 
+}
+
+.checkbox-trigger {
+    opacity: 0;
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    left: 0px;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.hamburger-menu,
+.hamburger-menu::before,
+.hamburger-menu::after {
+    display: block;
+    position: sticky;
+    background: white;
+    width: 40px;
+    height: 4px;
+    margin: 1.3em 3em;
+    transition: background 0.3s;
+}
+
+.hamburger-menu::before,
+.hamburger-menu::after {
+    content: '';
+    position: absolute;
+    margin: -0.7em 0 0;
+    transition: width 0.7s ease 0.3s, transform 0.7s ease 0.3s;
+}
+
+.hamburger-menu::after {
+    margin-top: 0.7em;
+}
+
+.hamburger-menu {
+    position: relative;
+    display: block;
+    margin: 0;
+    margin-top: 1.45em;
+    margin-right: 0.35em;
+    margin-left: 0.35em;
+    margin-bottom: 1.45em;
+    transition: width 0.3s ease;
+}
+
+.checkbox-trigger:checked {
+    left: 202px;
+}
+
+.checkbox-trigger:checked+.menu-content .hamburger-menu {
+    width: 2em;
+
+    transition: width 0.7s ease 0.7s;
+}
+
+.checkbox-trigger:checked+.menu-content .hamburger-menu::before {
+    width: 1.2em;
+    transform: rotate(-35deg);
+    margin-top: -0.4em;
+}
+
+.checkbox-trigger:checked+.menu-content .hamburger-menu::after {
+    width: 1.2em;
+    transform: rotate(35deg);
+    margin-top: 0.4em;
+}
+
+.checkbox-trigger:checked+.menu-content .pullCont {
+    width: 200px;
+    height: auto;
+    transition: width 0.7s ease 0.3s, height 0.3s ease;
+    
+    z-index:3; 
+}
+
+.menu-content {
+    display: flex;
+    background: #ffc300;
+    color: white;
+    float: left;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.pullCont h1 {
+    font-family: 'Viagram', sans-serif;
+    text-align:center; 
+}
+.menu-content .pullCont {
+    display: block;
+    padding-left: 0;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin: 0;
+    width: 0px;
+    height: 0px;
+    overflow: hidden;
+    transition: height 0.3s ease 0.7s, width 0.7s ease;
+    
+}
+.menu-content table {
+    border-collapse: separate;
+    border-spacing: 14px 14px;
+    height: 400px;
+    overflow-y: scroll;
+}
+.menu-content table td {
+    background:none;
+    border-radius: 25px;
+    height:30px;
+    width:50px; 
+    padding-bottom:20px;  
+    text-align: center;
+    cursor: pointer;
+    transition: color 0.5s, background 0.5s;
+    overflow-wrap: break-word;
+    
+    border-radius: 10px;
+    background: white;
+    font-size: 16px;
+    font-family: 'Artistry', 'Tahoma', sans-serif;
+}
+
+.menu-content table td:hover {
+    color: #ffc300;
+    background: white;
+}
+
+.menu-content td:hover {
+    background: rgba(40, 40, 40);
+    color: #ffc300;
+    transition: 0.2s ease-out;
+    cursor: pointer;
+}
+
+.menu-content td:hover span {
+    transition: 0.2s ease-out;
+    color: #ffc300;
+}
+.menu-content td button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: -20px;
+}
+.accLinks {
+    display:flex;
+    flex-direction:row;
+    justify-content: space-evenly;
+    text-align: center;
+    margin-top:15px; 
+    
+}
+.accLinks span {
+    width:100%; 
+    font-weight:bold;
+    padding:5px; 
+    font-family:'Open Runde'
+}
+.accLinks a {
+    text-decoration: none;
+    box-shadow: inset 0 0 0 0 #ffc300;
+    color: white;
+    margin: 0 -.25rem;
+    padding: 0 .25rem;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+.accLinks a:hover {
+    box-shadow: inset 100px 0 0 0 black;
+    color: #ffc300;
+}
+#pullSearch {
+    margin-top:10px;
+    margin-left:20px; 
+    font-family: 'Open Runde', sans-serif;
 
 }
-#drawer-toggle {
-   
-   
-    -webkit-transition: .25s ease-in-out;
-    -moz-transition: .25s ease-in-out;
-    -o-transition: .25s ease-in-out;
-    transition: .25s ease-in-out;
+
+#pullInput {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    z-index: 0;
+}
+
+#pullInput input {
+    font-size:12px; 
+    margin: 0px;
+    padding: 10px;
+    width: 90%;
+    outline: none;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+
+}
+
+#pullInput button {
+    height: 40px;
+    cursor: pointer;
+    color: white;
+    background-color: black;
+    border: none;
+    margin-left: 2px;
+    border-radius: 5%;
+
+}
+
+#pullInput button p {
+    color: white;
+    font-size: 12px;
+    margin: 0;
+}
+
+#pullInput button p:hover {
+    color: #ffc300;
+}
+
+#pullInput button:hover {
+    background-color: white;
+    transition: 0.05s;
+}
+/*
+
+
+
+
+MEDIA VIEWPORT STUFF 
+
+
+
+
+*/
+@media only screen and (max-width: 900px){
+    #createContainer {
+            width: 90%;
+        }
+}
+@media only screen and (max-width: 600px) {
+    
+    
+    
+    
+    
+    #dishContainer #row, #favContainer #row {
+        width: 100%;
+        flex-direction: column;
+        align-self: center;
+    }
+    #dishContainer, #favContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #dishBox {
+        align-self: center;
+        width:70%; 
+    }
     
 }
 
-#hamburger * {
-    -webkit-transition: .25s ease-in-out;
-        -moz-transition: .25s ease-in-out;
-        -o-transition: .25s ease-in-out;
-        transition: .25s ease-in-out;
+@media only screen and (max-width: 800px) {
+    #title {
+            margin-top: 50px;
+            margin-left: -30px;
+        }
+    #subInput {
+        width: 80%;
+    }
+        .sideMenu {
+            display: none;
+        }
+    .fSec {
+        display:none; 
+    }
+
+   
+}
+@media only screen and (max-width: 1000px) {
+    
+    #row {
+        flex-direction:row; 
+    }
+    #restaurantsContainer {
+        margin-top:-150px; 
+        scale:0.6; 
+        margin-bottom:-150px; 
+    }
+        
+   #title {
+       margin-top: 50px;
+       margin-left: -60px;
+   }
+   
+
+}
+@media only screen and (max-width:1200px){
+    .sideMenu {
+            display: none;
+        }
+         #accOps {
+             display: none;
+         }
+    
+         #cartCont {
+             display: none;
+         }
 }

@@ -109,6 +109,13 @@ class DishController extends Controller
     }
     public function create()
     {
+        $cRests = Restaurant::all();
+        $cuisines = [];
+        foreach($cRests as $c){
+            if(in_array($c->cuisine, $cuisines) == FALSE){
+                $cuisines[]=$c->cuisine;
+            }
+        }
         if(Auth::user()->name ?? "" == null) {
              $rest_id = Auth::user()->id ?? ""; 
              $rest = \DB::table('restaurants')
@@ -129,7 +136,7 @@ class DishController extends Controller
         $message = ""; 
         
        
-        return view('dishes.create')->with('message',$message)->with('rest_id', $rest_id); 
+        return view('dishes.create')->with('message',$message)->with('rest_id', $rest_id)->with('cuisines',$cuisines); 
     }
 
     /**
@@ -140,6 +147,13 @@ class DishController extends Controller
      */
     public function store(Request $request)
     {
+        $cRests = Restaurant::all();
+        $cuisines = [];
+        foreach($cRests as $c){
+            if(in_array($c->cuisine, $cuisines) == FALSE){
+                $cuisines[]=$c->cuisine;
+            }
+        }
         $restaurant = Restaurant::whereRaw('name = ?', array($request->restaurant))->get(); 
         if(Auth::user()->name ?? "" == null) {
              $rest_id = Auth::user()->id ?? ""; 
@@ -191,7 +205,7 @@ class DishController extends Controller
         } else {
             $message = "Please select a unique dish name";
             $tags = explode(",", $dish->tags); 
-            return view("dishes.create")->with('tags', $tags)->with('message', $message)->with('rest_id', $rest_id);  
+            return view("dishes.create")->with('tags', $tags)->with('message', $message)->with('rest_id', $rest_id)->with('cuisines', $cuisines);  
         }
         
     }
@@ -215,7 +229,13 @@ class DishController extends Controller
      */
     public function edit($id)
     {   
-       
+        $cRests = Restaurant::all();
+        $cuisines = [];
+        foreach($cRests as $c){
+            if(in_array($c->cuisine, $cuisines) == FALSE){
+                $cuisines[]=$c->cuisine;
+            }
+        }
         if(Auth::user()->name ?? "" == null) {
              $rest_id = Auth::user()->id ?? ""; 
              $rest = \DB::table('restaurants')
@@ -236,7 +256,7 @@ class DishController extends Controller
         }
         $dish = Dish::find($id);
         $tags = explode(",", $dish->tags); 
-        return view('dishes.edit')->with('dish', $dish)->with('rest_id', $rest_id)->with('tags', $tags);
+        return view('dishes.edit')->with('dish', $dish)->with('rest_id', $rest_id)->with('tags', $tags)->with('cuisines', $cuisines);
     }
 
     /**

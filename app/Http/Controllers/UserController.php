@@ -51,6 +51,13 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        $cRests = Restaurant::all();
+        $cuisines = [];
+        foreach($cRests as $c){
+            if(in_array($c->cuisine, $cuisines) == FALSE){
+                $cuisines[]=$c->cuisine;
+            }
+        }
         $user = User::find($id); 
         $uDishes = explode(",",$user->favs);
         $favs = []; 
@@ -60,7 +67,7 @@ class UserController extends Controller
         }
         
        #dd($favs); 
-        return view('user.favs')->with('favs', $favs); 
+        return view('user.favs')->with('favs', $favs)->with('cuisines', $cuisines); 
     }
 
     /**

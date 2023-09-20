@@ -11,6 +11,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <link href="{{asset('/fontawesome-free-6.4.0-web/css/fontawesome.css')}}" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link href="{{asset('/fontawesome-free-6.4.0-web/css/solid.css')}}" rel="stylesheet">
     </head>
     <body>
@@ -72,6 +73,80 @@
             }
         }
     </script>
+
+     <span class="container">
+      <span class="checkbox-container">
+        <input class="checkbox-trigger" type="checkbox"  />
+        <span class="menu-content">
+            <span class="pullCont">
+                <h1> Cuisines </h1> 
+               <div id="pullTable" style="height:300px; overflow-y:scroll; overflow-x:hidden;">
+                <table>
+            
+                @for($i = 0; $i < count($cuisines); $i+=2)
+                <tr>
+                    
+                    <td>
+                    <form action="{{url('/')}}"> 
+                        <input type="hidden" name="search" value="{{$cuisines[$i]}}" >
+                        <button type="submit"><span>{{$cuisines[$i]}}</span></button>
+                    </form>
+                    </td>
+                    <td>
+                    <form action="{{url('/')}}">
+                        <input type="hidden" name="search" value="{{$cuisines[$i+1]}}" >
+                        <button type="submit"><span>{{$cuisines[$i+1]}}</span></button>
+                    </form>
+                    </td>
+                </tr>
+                @endfor
+                </table></div>
+                @auth
+                @if(Auth::user()->role == 1)
+                <div class="accLinks">
+                    <span>
+                        <a data-toggle="modal" data-target="#exampleModal">Cart</a>
+                    </span>
+                    <span>
+                        <a href='{{url("favs/".Auth::user()->id)}}'> Favourites </a>
+                    </span>
+                </div>
+                @elseif(Auth::user()->role == 2)
+                <div class="accLinks">
+                    <span>
+                        <a href=' {{url("dish/create")}}'> Create</a>
+                    </span>
+                    <span>
+                        <a href='{{url("order/".$rest_id)}}'> Orders</a>
+                    </span>
+                </div>
+                @endif
+                @endauth
+                @guest
+                <div class="accLinks">
+                    <span>
+                        <a href="{{route('login')}}"> Log In </a> 
+                    </span>
+                
+                    <span>
+                        <a href="{{route('register')}}"> Sign Up</a> 
+                    </span>
+                </div>
+                @endguest
+                <div id="pullSearch">
+                    <form> 
+                    <div id="pullInput"> 
+                        <input type="text" name="search" placeholder="Search for a favourite restaurant, cuisine or dish." > 
+                        <button type="submit"> <p> Find Food! <p> </button> 
+                    </div> 
+                    </form> 
+                </div>
+            </span>
+          <span class="hamburger-menu"></span>
+        </span>
+      </span>
+    </span>
+
     <div id="menuBar">
         
         <div id="hamburger"> 
@@ -163,10 +238,10 @@
             <img src="{{url('images/logo2.png')}}" /> 
         </div>
         
-        <div>
+        <div class="fSec">
             <p> ©  2023 Jakeb Knowles </p> 
         </div>
-        <div> 
+        <div class="fSec"> 
             <p> THIS IS A MOCK / FAKE WEBSITE </p> 
         </div>
     </div> 

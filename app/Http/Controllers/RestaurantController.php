@@ -17,6 +17,15 @@ class RestaurantController extends Controller
      */
     public function index()
     {   
+        //GATHERING ALL CUISINES FOR MENU
+        $cRests = Restaurant::all();
+        $cuisines = [];
+        foreach($cRests as $c){
+            if(in_array($c->cuisine, $cuisines) == FALSE){
+                $cuisines[]=$c->cuisine;
+            }
+        }
+
         if(Auth::user()->name ?? "" == null) {
              $rest_id = Auth::user()->id ?? ""; 
              $rest = \DB::table('restaurants')
@@ -37,20 +46,12 @@ class RestaurantController extends Controller
         }
         if (request('search')) {
             $dishes = Dish::where('tags', 'like', '%' . request('search') . '%')->get(); 
-            return view('dishes.search')->with('dishes', $dishes)->with('rest_id', $rest_id)->with('search',request('search')); 
+            return view('dishes.search')->with('dishes', $dishes)->with('rest_id', $rest_id)->with('search',request('search'))->with('cuisines', $cuisines); 
         } else {
             $dishes = Dish::all();
         }
 
-        //GATHERING ALL CUISINES FOR MENU
-        $cRests = Restaurant::all();
-        $cuisines = [];
-        foreach($cRests as $c){
-            if(in_array($c->cuisine, $cuisines) == FALSE){
-                $cuisines[]=$c->cuisine;
-            }
-        }
-
+        
         $restaurants = Restaurant::paginate(6);
         $ids = \DB::table('users')
                 ->where('role', '=', 2)
@@ -60,6 +61,13 @@ class RestaurantController extends Controller
         return view('restaurants.index')->with('restaurants', $restaurants)->with('rest_id', $rest_id)->with('ids', $ids)->with('cuisines', $cuisines); 
     }
     public function favs($id) {
+        $cRests = Restaurant::all();
+        $cuisines = [];
+        foreach($cRests as $c){
+            if(in_array($c->cuisine, $cuisines) == FALSE){
+                $cuisines[]=$c->cuisine;
+            }
+        }
         $user = User::find($id); 
         $uDishes = explode(",",$user->favourites);
         $favs = []; 
@@ -67,7 +75,7 @@ class RestaurantController extends Controller
             $dish = Dish::find($d); 
             $favs[] = $dish;
         }
-        return view('user.favs')->with('favs', $favs); 
+        return view('user.favs')->with('favs', $favs)->with('cuisines', $cuisines); 
     }
     /**
      * Show the form for creating a new resource.
@@ -98,6 +106,13 @@ class RestaurantController extends Controller
      */
     public function show($id)
     {
+        $cRests = Restaurant::all();
+        $cuisines = [];
+        foreach($cRests as $c){
+            if(in_array($c->cuisine, $cuisines) == FALSE){
+                $cuisines[]=$c->cuisine;
+            }
+        }
         if(Auth::user()->name ?? "" == null) {
              $rest_id = Auth::user()->id ?? ""; 
         } else {
@@ -114,7 +129,7 @@ class RestaurantController extends Controller
         for($i = 1; $i < $restaurants->priceLv; $i++) {
             $dSigns[] = '$'; 
         }
-        return view('restaurants.show')->with('dishes', $dishes)->with('restaurants', $restaurants)->with('priceLv', $dSigns)->with('message', $message)->with('rest_id', $rest_id); 
+        return view('restaurants.show')->with('dishes', $dishes)->with('restaurants', $restaurants)->with('priceLv', $dSigns)->with('message', $message)->with('rest_id', $rest_id)->with('cuisines', $cuisines); 
     }
     public function search(Request $request) {
         dd($request); 
@@ -126,9 +141,15 @@ class RestaurantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {   $cRests = Restaurant::all();
+        $cuisines = [];
+        foreach($cRests as $c){
+            if(in_array($c->cuisine, $cuisines) == FALSE){
+                $cuisines[]=$c->cuisine;
+            }
+        }
         $dish = Dish::find($id);
-        return view('restaurants.edit')->with('dish',$dish);  
+        return view('restaurants.edit')->with('dish',$dish)->with('cuisines', $cuisines);  
     }
 
     /**

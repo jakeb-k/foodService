@@ -39,6 +39,13 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        $cRests = Restaurant::all();
+        $cuisines = [];
+        foreach($cRests as $c){
+            if(in_array($c->cuisine, $cuisines) == FALSE){
+                $cuisines[]=$c->cuisine;
+            }
+        }
         $cart = session('cart'); 
         $total = 0; 
         $dishes = []; 
@@ -61,7 +68,7 @@ class OrderController extends Controller
             $order->user_id = $userId;
             $order->restaurant_id = $getDish[0]->restaurant_id;    
             $order->save(); 
-        return view("orders.index")->with('time', $order->created_at);
+        return view("orders.index")->with('time', $order->created_at)->with('cuisines', $cuisines);
     }
 
     /**
@@ -72,6 +79,13 @@ class OrderController extends Controller
      */
     public function show($id)
     {
+        $cRests = Restaurant::all();
+        $cuisines = [];
+        foreach($cRests as $c){
+            if(in_array($c->cuisine, $cuisines) == FALSE){
+                $cuisines[]=$c->cuisine;
+            }
+        }
         $orders = Restaurant::find($id)->order;
         $rest = \DB::table('users')
                     ->where('name', '=', Auth::user()->name)
@@ -87,7 +101,7 @@ class OrderController extends Controller
             $users[] = $user; 
             $ordered[] = explode(",",$order->dishes);
         }
-        return view('orders.show')->with('orders', $orders)->with('users', $users)->with('ordered', $ordered)->with('total', $total)->with('rest_id',$rest_id); 
+        return view('orders.show')->with('orders', $orders)->with('users', $users)->with('ordered', $ordered)->with('total', $total)->with('rest_id',$rest_id)->with('cuisines',$cuisines); 
     }
 
     /**
