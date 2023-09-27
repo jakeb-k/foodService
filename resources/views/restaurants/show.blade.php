@@ -39,7 +39,7 @@
                 <div id="addLinks">
                     
                     <a href='{{url("add-to-cart/$dish->id")}}'> 
-                        <img src="{{ asset('storage/images/'.$dish->image) }}" />
+                        <img src="{{ url('storage/images/'.$dish->image) }}" />
                     </a>
                 
                 @if(in_array(strval($dish->id), $check, true)) 
