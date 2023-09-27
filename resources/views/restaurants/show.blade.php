@@ -41,7 +41,7 @@
                     <a href='{{url("add-to-cart/$dish->id")}}'> 
                         <img src="{{ asset('storage/images/'.$dish->image) }}" />
                     </a>
-                
+                    <?php dd('storage/images/'.$dish->image); ?>
                 @if(in_array(strval($dish->id), $check, true)) 
                    <span class="favButton">
                         <form id="favForm2" method="POST" action='{{url("user/".Auth::user()->id."/new-fav")}}' enctype="multipart/form-data">
