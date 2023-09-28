@@ -1150,17 +1150,6 @@ FAVS PAGE STYLING
     padding: 0;
     align-self: flex-start;
 }
-/*
-
-
-LOGIN & REGISTER FORM STYLING
-
-*/
-#title2 {
-    display:flex; 
-    align-self:center;
-    margin-left:20%; 
-}
 
 /*
 
@@ -1587,11 +1576,116 @@ a {
     transition: 0.05s;
 }
 /*
+ 
+
+
+
+AUTH FORM STYLING
 
 
 
 
-MEDIA VIEWPORT STUFF 
+
+*/
+#authForm,
+#regForm {
+    width: 70%;
+    height: 90%;
+    background: white;
+    border-radius: 5px;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    font-family: 'Rubik', Arial, Helvetica, sans-serif;
+    margin: auto;
+    box-shadow: 0 0 10px rgb(43, 43, 43);
+}
+#title2 {
+    background:none;
+    display:flex; 
+    width:100%;
+    align-content:center; 
+    background: white;
+    margin-bottom: -50px;
+}
+#regForm {
+    height: 90%;
+}
+
+#authForm div,
+#regForm div {
+    margin: 0.5% 2.5%;
+}
+
+.authInput {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: center;
+}
+
+.authInput input {
+    align-self: center;
+    width: 100%;
+    padding: 2%;
+}
+
+.authInput input:focus {
+    outline: 1px solid #ffc300;
+    border: 1px solid #c0950a;
+    border-radius: 5px;
+   
+}
+
+.forPass a {
+    text-decoration: none;
+    box-shadow: inset 0 0 0 0 #ffc300;
+    color: black;
+    margin: 0 -.25rem;
+    padding: 0 .25rem;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+.forPass a:hover {
+    box-shadow: inset 175px 0 0 0 #ffc300;
+    color: white;
+}
+
+#authForm form,
+#regForm form {
+    align-items: center;
+    width: 100%;
+    text-align: center;
+
+}
+
+#authForm button,
+#regForm button {
+    width: 100%;
+    font-family: 'League Gothic', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 32px;
+    border: 2px solid #ffc300;
+    background: none;
+    border-radius: 10px;
+    padding: 3%;
+    cursor: pointer;
+    transition: 0.25s ease-in-out;
+}
+
+#authForm button:hover,
+#regForm button:hover {
+    color: white;
+    background: #ffc300;
+}
+
+
+/*
+
+
+
+
+MEDIA VIEWPORT QUERIES 
 
 
 

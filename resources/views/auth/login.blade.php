@@ -1,19 +1,19 @@
-<x-guest-layout>
-    <x-auth-card>
-            <div id="title2" style="margin-left:30%; margin-bottom:-50px;">
-                <a href='/FoodService/public'>
+<title> Login </title>
+         <link rel="stylesheet" href="{{asset('css/wp.scss')}}" type="text/css">
+          
+        <!-- Session Status -->
+        <div id="authForm">
+
+        <x-auth-session-status class="mb-4" :status="session('status')" />
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+            <div id="title" style="background:white; margin-bottom:50px;">
+                <a href="{{url('/')}}">
                     <img src="{{url('images/logo2.png')}}" /> 
                 </a>
             </div>
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-    
-        <div id="createContainer">
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
             <!-- Email -->
-            <div class="input-group mb-3">
+            <div class="authInput">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Email:</span>
                 </div>
@@ -23,7 +23,7 @@
             </div>
 
             <!-- Password -->
-            <div class="input-group mb-3">
+            <div class="authInput">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Password:</span>
                 </div>
@@ -42,18 +42,18 @@
                 </label>
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-primary-button class="text-gray-600 ml-4">
+            <div class="forPass">
+            @if (Route::has('password.request'))
+                <a class="forPass" href="{{ route('password.request') }}">
+                    {{ __('Forgot your password?') }}
+                </a>
+            @endif
+            <div class="authButton">
+                <x-primary-button class="ml-3">
                     {{ __('Log in') }}
                 </x-primary-button>
             </div>
+
+        </div>
         </form>
     </div>
-    </x-auth-card>
-</x-guest-layout>

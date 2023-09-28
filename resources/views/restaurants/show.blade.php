@@ -39,7 +39,7 @@
                 <div id="addLinks">
                     
                     <a href='{{url("add-to-cart/$dish->id")}}'> 
-                        <img src="{{ asset('storage/images/'.$dish->image) }}" />
+                        <img src="{{ Storage::disk('public')->url('images/'.$dish->image) }}" />
                     </a>
                     
                 @if(in_array(strval($dish->id), $check, true)) 
@@ -67,11 +67,11 @@
                 @endif
                 </div>
                 @else
-                    <img src="{{ asset('storage/images/'.$dish->image) }}" />
+                    <img src="{{ Storage::disk('public')->url('images/'.$dish->image) }}" />
                 @endif
                 @endauth
                 @guest 
-                    <img src="{{ asset('storage/images/'.$dish->image) }}" />
+                    <img src="{{ Storage::disk('public')->url('images/'.$dish->image) }}" />
                 @endguest
             @else 
                 @auth
@@ -150,7 +150,7 @@
                <div id="addLinks">
                    
                     <a href='{{url("add-to-cart/$dish->id")}}'> 
-                        <img src="{{ asset('storage/images/'.$dish->image) }}" />
+                        <img src="{{ Storage::disk('public')->url('images/'.$dish->image) }}" />
                     </a>
                     
                     @if(in_array(strval($dish->id), $check, true)) 
@@ -179,11 +179,11 @@
                     
                 </div>
                 @else
-                    <img src="{{ asset('storage/images/'.$dish->image) }}" />
+                    <img src="{{ Storage::disk('public')->url('images/'.$dish->image) }}" />
                 @endif
                 @endauth
                 @guest
-                    <img src="{{ asset('storage/images/'.$dish->image) }}" />
+                    <img src="{{ Storage::disk('public')->url('images/'.$dish->image) }}" />
                 @endguest
             @else 
                 @auth
